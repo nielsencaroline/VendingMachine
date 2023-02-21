@@ -14,7 +14,9 @@ public class Vendor
     private int stock;
     private int deposit;
     private int change;
+
     //make a private static double variable called totalSales that has an initial value of 0
+    private static double totalSales = 0.0;
 
 
     /**
@@ -25,6 +27,8 @@ public class Vendor
     public Vendor(int price, int stock)
     {
         //You need to complete this using this. notation
+        this.price = price;
+        this.stock = stock;
     }
 
     /**
@@ -36,6 +40,7 @@ public class Vendor
     public void setStock(int stock)
     {
         //You need to complete this using this. notation
+        this.stock = stock;
     }
 
     /**
@@ -45,6 +50,7 @@ public class Vendor
     public int getStock()
     {
         //complete this
+        return this.stock;
     }
 
     /**
@@ -55,6 +61,7 @@ public class Vendor
     public void addMoney(int d)
     {
         //You need to complete this using mutator
+        deposit += d;
     }
 
     /**
@@ -78,6 +85,18 @@ public class Vendor
     public boolean makeSale()
     {
         //create the makesale method
+        if(deposit >= price && stock > 0){
+            stock--;
+            change += deposit - price;
+            totalSales += price;
+            deposit = 0;
+            return true;
+        }
+        else{
+            change += deposit;
+            deposit = 0;
+            return false;
+        }
     }
 
     /**
@@ -87,8 +106,8 @@ public class Vendor
      */
     public int getChange()
     {
-        int c=change;
-        change=0;
+        int c = change;
+        change = 0;
         return c;
     }
 
@@ -98,11 +117,15 @@ public class Vendor
         /*
         note that the coin class has a .getQuarters(), a .getDimes() etc etc (use the coin class!)
         */
-        
+        Coins updatedCoins = new Coins(change);
+        int quarters = updatedCoins.getQuarters();
+        int dimes = updatedCoins.getDimes();
+        int nickels = updatedCoins.getNickles();
+        int pennies = updatedCoins.getPennies();
 
-        String changeString="";
+        String changeUpdate = "Change back is " + deposit + " or "+ updatedCoins.getQuarters() + " quarters " + updatedCoins.getDimes()+ " dimes " + updatedCoins.getNickles() + " nickles";
 
-        return changeString;
+        return changeUpdate;
     }
     
     /**
@@ -114,5 +137,9 @@ public class Vendor
     public static double getTotalSales()
     {
         //complete this
+        if(totalSales != 0){
+            totalSales = 0;
+        }
+        return totalSales;
     }
-}
+    }

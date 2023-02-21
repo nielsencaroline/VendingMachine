@@ -6,7 +6,7 @@ package Number42;
 import java.util.Scanner;
 
 /**
- * @author *******
+ * @author Caroline Nielsen
  * 
  * A coins class to find the correct number of coins to make a certain amount of change
  *
