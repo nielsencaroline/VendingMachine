@@ -87,13 +87,13 @@ public class Vendor
         //create the makesale method
         if(deposit >= price && stock > 0){
             stock--;
-            change += deposit - price;
-            totalSales += price;
+            change = change + deposit - price;
+            totalSales= totalSales + price;
             deposit = 0;
             return true;
         }
         else{
-            change += deposit;
+            change = change + deposit;
             deposit = 0;
             return false;
         }
@@ -123,7 +123,7 @@ public class Vendor
         int nickels = updatedCoins.getNickles();
         int pennies = updatedCoins.getPennies();
 
-        String changeUpdate = "Change back is " + deposit + " or "+ updatedCoins.getQuarters() + " quarters " + updatedCoins.getDimes()+ " dimes " + updatedCoins.getNickles() + " nickles";
+        String changeUpdate = "Change back is " + deposit + " or "+ quarters + " quarters " + dimes + " dimes " + nickels + " nickels " + pennies + " pennies";
 
         return changeUpdate;
     }
@@ -137,9 +137,9 @@ public class Vendor
     public static double getTotalSales()
     {
         //complete this
-        if(totalSales != 0){
-            totalSales = 0;
-        }
-        return totalSales;
+        double temp = totalSales;
+        temp = temp / 100;
+        totalSales = 0.0;
+        return temp;
     }
     }
