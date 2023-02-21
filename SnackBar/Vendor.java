@@ -56,7 +56,7 @@ public class Vendor
     /**
      * Adds a specified amount (in cents) to the
      * deposited amount.
-     * @param number of cents to add to the deposit (int)
+     * @param the number of cents to add to the deposit (int)
      */
     public void addMoney(int d)
     {
@@ -111,6 +111,10 @@ public class Vendor
         return c;
     }
 
+    /**
+     * @return the amount and type of coins that should be returned by the machine
+     *
+     */
     public String getChangeString()
     {
         //From Ethan: create a get method that returns the amount and type of coins that should be returned by the machine
@@ -123,7 +127,7 @@ public class Vendor
         int nickels = updatedCoins.getNickles();
         int pennies = updatedCoins.getPennies();
 
-        String changeUpdate = "Change back is " + deposit + " or "+ quarters + " quarters " + dimes + " dimes " + nickels + " nickels " + pennies + " pennies";
+        String changeUpdate = "Change " + deposit + "c=  "+ quarters + " q " + dimes + " d " + nickels + " n " + pennies + " p";
 
         return changeUpdate;
     }
